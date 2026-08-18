@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabine Ismail | Digital Marketing Portfolio</title>
+    <meta name="description" content="Portfolio of Sabine Ismail — Marketing student at Beirut Arab University. Digital Marketing, Social Media Strategy, and Content Creation.">
+    <meta name="theme-color" content="#FFFDF7">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Outfit for bold headers, Inter for readable body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           DESIGN TOKENS — VIBRANT TERRACOTTA, PEACH & ONYX (NEO-BRUTALISM)
+           ============================================================ */
+        :root {
+            /* Colors */
+            --bg-page:      #FFFDF7; /* Warm off-white */
+            --bg-card:      #FFFFFF; 
+            
+            --ink-main:     #111111; /* Sharp Onyx Black */
+            --ink-muted:    #4A4A4A; 
+            
+            --brand-primary:#E05A47; /* Vibrant Terracotta / Coral */
+            --brand-light:  #F2A679; /* Soft Peach */
+            --brand-accent: #FFD166; /* Warm Yellow for highlights */
+
+            /* Borders & Shadows (The Neo-Brutalist Look) */
+            --border-thick: 3px solid var(--ink-main);
+            --border-thin:  2px solid var(--ink-main);
+            --shadow-hard:  6px 6px 0px var(--ink-main);
+            --shadow-hover: 2px 2px 0px var(--ink-main);
+            --shadow-sm:    3px 3px 0px var(--ink-main);
+
+            /* Geometry */
+            --r-pill:       50px;
+            --r-box:        12px;
+            
+            /* Typography */
+            --font-head:    'Outfit', sans-serif;
+            --font-body:    'Inter', sans-serif;
+
+            --fs-xl:        clamp(3.5rem, 8vw, 6rem);
+            --fs-lg:        clamp(2.5rem, 5vw, 4rem);
+            --fs-md:        clamp(1.5rem, 3vw, 2rem);
+            --fs-base:      1.1rem;
+            --fs-sm:        0.95rem;
+
+            --nav-h:        80px;
+            --max-w:        1200px;
+            --dur:          0.2s;
+        }
+
+        /* ============================================================
+           GLOBAL RESET
+           ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; }
+        * { margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--fs-base);
+            line-height: 1.6;
+            color: var(--ink-main);
+            background-color: var(--bg-page);
+            overflow-x: hidden;
+            /* Subtle background pattern */
+            background-image: radial-gradient(var(--ink-muted) 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            background-position: -19px -19px;
+        }
+
+        img, video { max-width: 100%; display: block; border-radius: var(--r-box); }
+        ul { list-style: none; }
+        a { color: inherit; text-decoration: none; }
+
+        ::selection { background: var(--brand-primary); color: #FFF; }
+
+        /* ============================================================
+           TYPOGRAPHY
+           ============================================================ */
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            color: var(--ink-main);
+            line-height: 1.1;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            font-family: var(--font-head);
+            font-size: var(--fs-sm);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--brand-light);
+            color: var(--ink-main);
+            padding: 0.4rem 1.2rem;
+            border: var(--border-thin);
+            border-radius: var(--r-pill);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ============================================================
+           COMPONENTS
+           ============================================================ */
+        .wrapper {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        /* Brutalist Card */
+        .b-card {
+            background: var(--bg-card);
+            border: var(--border-thick);
+            border-radius: var(--r-box);
+            box-shadow: var(--shadow-hard);
+            padding: 2rem;
+            transition: all var(--dur) ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Interactive Hover for Cards */
+        .b-card.interactive:hover {
+            transform: translate(4px, 4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Brutalist Button */
+        .b-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--brand-primary);
+            color: #FFFFFF;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            border: var(--border-thick);
+            border-radius: var(--r-pill);
+            box-shadow: var(--shadow-hard);
+            cursor: pointer;
+            transition: all var(--dur) ease;
+        }
+        .b-btn:hover {
+            transform: translate(4px, 4px);
+            box-shadow: var(--shadow-hover);
+            background: var(--brand-light);
+            color: var(--ink-main);
+        }
+
+        /* ============================================================
+           FLOATING NAVIGATION
+           ============================================================ */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 95%;
+            max-width: 900px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+            border: var(--border-thick);
+            border-radius: var(--r-pill);
+            padding: 0.5rem 1.5rem;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .nav__brand {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--ink-main);
+            letter-spacing: -0.02em;
+        }
+        .nav__brand span { color: var(--brand-primary); }
+
+        .nav__links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav__link {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            position: relative;
+            padding: 0.5rem;
+        }
+        .nav__link:hover { color: var(--brand-primary); }
+
+        .nav__toggle {
+            display: none;
+            background: var(--brand-primary);
+            border: var(--border-thin);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* ============================================================
+           HERO SECTION
+           ============================================================ */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+        }
+
+        .hero__grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero__content h1 {
+            font-size: var(--fs-xl);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .hero__content h1 span {
+            color: var(--bg-page);
+            text-shadow: 
+                -2px -2px 0 var(--ink-main),  
+                 2px -2px 0 var(--ink-main),
+                -2px  2px 0 var(--ink-main),
+                 2px  2px 0 var(--ink-main),
+                 4px  4px 0 var(--brand-primary); /* Pop text effect */
+        }
+
+        .hero__desc {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .hero__meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .hero__meta span {
+            background: var(--bg-card);
+            border: var(--border-thin);
+            padding: 0.5rem 1rem;
+            border-radius: var(--r-pill);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero__image-box {
+            position: relative;
+            border: var(--border-thick);
+            border-radius: var(--r-box);
+            background: var(--brand-light);
+            padding: 1rem;
+            box-shadow: var(--shadow-hard);
+            transform: rotate(2deg);
+            transition: transform 0.3s ease;
+        }
+        .hero__image-box:hover {
+            transform: rotate(0deg);
+        }
+        .hero__image-box img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border: var(--border-thin);
+        }
+
+        /* ============================================================
+           SKILLS MARQUEE / GRID
+           ============================================================ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--bg-page);
+            border: var(--border-thin);
+            padding: 0.5rem 1rem;
+            border-radius: var(--r-pill);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 2px 2px 0px var(--ink-main);
+        }
+
+        /* ============================================================
+           MEDIA & ARTIFACTS (VIDEO RESTORED)
+           ============================================================ */
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: var(--fs-lg);
+            text-transform: uppercase;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .media-item {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        .media-item:nth-child(even) {
+            grid-template-columns: 1fr 1.5fr;
+            direction: rtl; /* flips the layout visually */
+        }
+        .media-item:nth-child(even) > * {
+            direction: ltr; /* resets text direction inside */
+        }
+
+        .media-visual {
+            border: var(--border-thick);
+            border-radius: var(--r-box);
+            box-shadow: var(--shadow-hard);
+            overflow: hidden;
+            background: var(--ink-main);
+        }
+        .media-visual video, .media-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .media-content h3 {
+            font-size: var(--fs-md);
+            margin-bottom: 1rem;
+        }
+        .media-content p {
+            color: var(--ink-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ============================================================
+           REFLECTION & EDUCATION (SPLIT)
+           ============================================================ */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .edu-item {
+            border-left: 4px solid var(--ink-main);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--brand-primary);
+            border: 2px solid var(--ink-main);
+            border-radius: 50%;
+        }
+
+        .edu-item h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .edu-item span { font-weight: 700; color: var(--brand-primary); display: block; margin-bottom: 0.5rem; }
+
+        /* ============================================================
+           CREDENTIALS GRID
+           ============================================================ */
+        .cred-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cred-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .cred-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--brand-accent);
+            border: var(--border-thick);
+            border-radius: var(--r-box);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .cred-info h3 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+        .cred-info p { font-size: 0.9rem; color: var(--ink-muted); font-weight: 600; }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer {
+            background: var(--ink-main);
+            color: var(--bg-page);
+            padding: 5rem 0 2rem;
+            border-top: var(--border-thick);
+        }
+        .footer h2, .footer h3, .footer h4 { color: var(--bg-page); }
+        .footer a:hover { color: var(--brand-primary); }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .footer-mail {
+            font-family: var(--font-head);
+            font-size: var(--fs-md);
+            text-decoration: underline;
+            text-decoration-color: var(--brand-primary);
+            text-underline-offset: 6px;
+            text-decoration-thickness: 3px;
+        }
+        .footer-links li { margin-bottom: 0.75rem; font-weight: 500; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 2px solid var(--ink-muted);
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+        }
+
+        /* ============================================================
+           ANIMATIONS
+           ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.is-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 992px) {
+            .hero__grid { grid-template-columns: 1fr; text-align: center; }
+            .hero__image-box { max-width: 400px; margin: 0 auto; }
+            .hero__meta, .hero__actions { justify-content: center; }
+            
+            .media-item, .media-item:nth-child(even) {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+            .split-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav__links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                border: var(--border-thick);
+                border-radius: var(--r-box);
+                flex-direction: column;
+                padding: 1.5rem;
+                box-shadow: var(--shadow-hard);
+                margin-top: 1rem;
+            }
+            .nav__links.is-open { display: flex; }
+            .nav__toggle { display: flex; }
+            
+            :root {
+                --fs-xl: 3rem;
+                --fs-lg: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= FLOATING NAVBAR ================= -->
+    <div class="nav-container">
+        <nav class="nav">
+            <a href="#" class="nav__brand">Sabine<span>.</span></a>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="#about" class="nav__link">Overview</a></li>
+                <li><a href="#skills" class="nav__link">Skills</a></li>
+                <li><a href="#reflection" class="nav__link">Synthesis</a></li>
+                <li><a href="#artifacts" class="nav__link">Artifacts</a></li>
+                <li><a href="#education" class="nav__link">Education</a></li>
+                <li><a href="#credentials" class="nav__link">Contact</a></li>
+            </ul>
+            <button class="nav__toggle" id="navToggle">☰</button>
+        </nav>
+    </div>
+
+    <!-- ================= HERO ================= -->
+    <header class="hero wrapper" id="about">
+        <div class="hero__grid">
+             <div class="hero__image-box reveal">
+                <img src="./assets/pfp.jpeg" alt="Sabine Ismail" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'500\' height=\'500\'><rect width=\'100%\' height=\'100%\' fill=\'%23F2A679\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23111\' text-anchor=\'middle\'>Sabine Profile Image</text></svg>'">
+            </div>
+            <div class="hero__content reveal">
+                <div class="tag-pill">Marketing Student &middot; BAU</div>
+                <h1>Sabine<br><span>Ismail</span></h1>
+                
+                <div class="hero__meta">
+                    <span>Expected Grad: May 2027</span>
+                    <span>Beirut, Lebanon</span>
+                </div>
+
+                <p class="hero__desc">
+                    Motivated and detail-oriented Marketing student with strong communication, teamwork, and problem-solving skills. Eager to gain practical experience and contribute to a professional work environment. Passionate about marketing and committed to learning, developing new skills, and achieving organizational goals.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="./assets/WhatsApp Unknown 2026-08-18 at 18.28.23/WhatsApp Image 2026-08-18 at 18.26.45 (3).jpeg" target="_blank" class="b-btn">View CV Overview</a>
+                    <a href="#credentials" class="b-btn" style="background: var(--bg-card); color: var(--ink-main);">Get in Touch</a>
+                </div>
+            </div>
+
+           
+        </div>
+    </header>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section wrapper" id="skills">
+        <div class="section-header reveal">
+            <div class="tag-pill">Capabilities</div>
+            <h2>Core Competencies</h2>
+        </div>
+
+        <div class="skills-grid">
+            <div class="b-card reveal">
+                <h3>Marketing Strategy</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Strategic Planning</span>
+                    <span class="skill-item">Crisis Management</span>
+                    <span class="skill-item">Social Media Marketing</span>
+                    <span class="skill-item">Content Creation</span>
+                    <span class="skill-item">Consumer Behavior</span>
+                    <span class="skill-item">SEO Principles</span>
+                </div>
+            </div>
+
+            <div class="b-card reveal">
+                <h3>Soft Skills</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Problem Solving</span>
+                    <span class="skill-item">Creative Thinking</span>
+                    <span class="skill-item">Teamwork & Leadership</span>
+                    <span class="skill-item">Adaptability to Change</span>
+                    <span class="skill-item">Effective Communication</span>
+                </div>
+            </div>
+
+            <div class="b-card reveal">
+                <h3>Languages & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-item" style="background: var(--brand-accent);">English (Fluent)</span>
+                    <span class="skill-item" style="background: var(--brand-accent);">Arabic (Fluent)</span>
+                    <span class="skill-item">Excel</span>
+                    <span class="skill-item">Google Analytics</span>
+                    <span class="skill-item">Canva</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MEDIA / ARTIFACTS / VIDEO ================= -->
+    <section class="section wrapper" id="artifacts">
+        <div class="section-header reveal">
+            <div class="tag-pill">Deliverables</div>
+            <h2>Learning Strategy & Artifacts</h2>
+        </div>
+
+        <div class="media-grid">
+            
+            <!-- Video Restored Here -->
+            <div class="media-item reveal">
+                <div class="media-visual">
+                    <video controls preload="metadata">
+                        <source src="./assets/eiI9QWz9.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="media-content">
+                    <div class="tag-pill" style="background: var(--brand-accent);">Video Demo</div>
+                    <h3>Professional Communication Demonstration</h3>
+                    <p>Interactive video case study demonstrating effective communication, presentation skills, and professional interactions in a marketing context.</p>
+                </div>
+            </div>
+
+            <!-- Artifact 1 -->
+            <div class="media-item reveal">
+                <div class="media-visual">
+                    <img src="./assets/WhatsApp Unknown 2026-08-18 at 18.28.23/WhatsApp Image 2026-08-18 at 18.26.45 (1).jpeg" alt="Learning Style Infographic">
+                </div>
+                <div class="media-content">
+                    <div class="tag-pill" style="background: var(--brand-accent);">Infographic</div>
+                    <h3>Visual + Read/Write Learning Strategy</h3>
+                    <p>An infographic detailing my approach to understanding concepts through visual diagrams, color-coding, and detailed note-taking. Combining visual materials with active rewriting helps me stay organized and prepare confidently.</p>
+                </div>
+            </div>
+
+            <!-- Artifact 2 -->
+            <div class="media-item reveal">
+                <div class="media-visual">
+                    <img src="./assets/WhatsApp Unknown 2026-08-18 at 18.28.23/WhatsApp Image 2026-08-18 at 18.26.45 (2).jpeg" alt="Communication Strip">
+                </div>
+                <div class="media-content">
+                    <div class="tag-pill" style="background: var(--brand-accent);">Visual Case</div>
+                    <h3>My future plan</h3>
+                    <p>Visual image of my future plan.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= REFLECTION & EDUCATION SPLIT ================= -->
+    <section class="section wrapper" id="reflection">
+        <div class="split-grid">
+            
+            <!-- Reflection -->
+            <div class="reveal">
+                <div class="tag-pill">Synthesis</div>
+                <h2>Academic Reflection</h2>
+                <div class="b-card" style="background: var(--brand-light);">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Applying Strategies in the Real World</h3>
+                    <p style="margin-bottom: 1rem; font-weight: 500;">Through my studies in Business Administration and Marketing, I have gained foundational knowledge of marketing strategies, consumer behavior, and effective communication. I am creative, organized, and highly motivated to learn more about developing social media campaigns and helping brands improve their online presence.</p>
+                    <p style="font-weight: 500;">I believe that securing internship opportunities, such as the social media marketing intern position at Ogilvy, will allow me to gain valuable practical experience while contributing fresh ideas and creativity to a professional team.</p>
+                </div>
+            </div>
+
+            <!-- Education & Plan -->
+            <div class="reveal" id="education">
+                <div class="tag-pill">Background</div>
+                <h2>Education & Plan</h2>
+                <div class="b-card">
+                    
+                    <div class="edu-item">
+                        <h3>BA in Marketing</h3>
+                        <span>Beirut Arab University &middot; Exp. May 2027</span>
+                        <p>Core focus on digital marketing, SEO, and social media strategy.</p>
+                    </div>
+
+                    <div class="edu-item">
+                        <h3>Life Humanities Baccalaureate</h3>
+                        <span>Ras Beirut International School &middot; Graduated 2024</span>
+                    </div>
+
+                    <div class="edu-item" style="border-left-color: var(--brand-primary); margin-bottom: 0;">
+                        <h3>Professional Goals</h3>
+                        <span>Post-Graduation Roadmap</span>
+                        <ul style="list-style-type: square; margin-left: 1.2rem; font-size: 0.95rem;">
+                            <li>Improve SEO/Social Media knowledge via Coursera/Canva.</li>
+                            <li>Gain experience through internships and volunteering.</li>
+                            <li>Build network via LinkedIn and BAU workshops.</li>
+                            <li>Develop technical skills like Excel & Google Analytics.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CREDENTIALS ================= -->
+    <section class="section wrapper" id="credentials">
+        <div class="section-header reveal">
+            <div class="tag-pill">Verified</div>
+            <h2>Professional Documents</h2>
+        </div>
+
+        <div class="cred-grid">
+            
+            <a href="./assets/WhatsApp Unknown 2026-08-18 at 18.28.23/WhatsApp Image 2026-08-18 at 18.26.45 (3).jpeg" target="_blank" class="b-card interactive cred-card reveal">
+                <div class="cred-icon">📄</div>
+                <div class="cred-info">
+                    <h3>Curriculum Vitae</h3>
+                    <p>View PDF Document</p>
+                </div>
+            </a>
+
+            <a href="./assets/WhatsApp Unknown 2026-08-18 at 18.28.23/WhatsApp Image 2026-08-18 at 18.26.45.jpeg" target="_blank" class="b-card interactive cred-card reveal">
+                <div class="cred-icon">📝</div>
+                <div class="cred-info">
+                    <h3>Cover Letter</h3>
+                    <p>Ogilvy Application Draft</p>
+                </div>
+            </a>
+
+            <a href="mailto:sabineismail563@gmail.com" class="b-card interactive cred-card reveal">
+                <div class="cred-icon">✉️</div>
+                <div class="cred-info">
+                    <h3>Direct Contact</h3>
+                    <p>sabineismail563@gmail.com</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="wrapper footer-grid">
+            <div>
+                <h2>Let's work together.</h2>
+                <p style="margin-top: 1rem; max-width: 80%;">Eager to apply my academic knowledge and develop my skills in digital marketing, social media management, and content creation.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:sabineismail563@gmail.com" class="footer-mail">sabineismail563@gmail.com</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="margin-bottom: 1.5rem; color: var(--ink-muted); text-transform: uppercase;">Portfolio</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">Overview</a></li>
+                    <li><a href="#skills">Competencies</a></li>
+                    <li><a href="#reflection">Reflection</a></li>
+                    <li><a href="#artifacts">Artifacts</a></li>
+                    <li><a href="#education">Education & Plan</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="margin-bottom: 1.5rem; color: var(--ink-muted); text-transform: uppercase;">Details</h4>
+                <ul class="footer-links">
+                    <li><a href="./assets/WhatsApp Unknown 2026-08-18 at 18.28.23/WhatsApp Image 2026-08-18 at 18.26.45 (3).jpeg" target="_blank">View Resume</a></li>
+                    <li><a href="./assets/WhatsApp Unknown 2026-08-18 at 18.28.23/WhatsApp Image 2026-08-18 at 18.26.45.jpeg" target="_blank">Cover Letter</a></li>
+                    <li>Phone: +961 76852152</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="wrapper footer-bottom">
+            &copy; <span id="year">2026</span> Sabine Ismail &middot; Marketing Student, Beirut Arab University.
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        // Update Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Nav Toggle
+        const toggle = document.getElementById('navToggle');
+        const links = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => {
+            links.classList.toggle('is-open');
+        });
+        links.addEventListener('click', () => {
+            links.classList.remove('is-open');
+        });
+
+        // Scroll Reveal
+        const revealables = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        revealables.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
